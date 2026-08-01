@@ -1,12 +1,12 @@
 from music import *
 
-repet=5
+repet=4
 
 class Guitarra(object):
 
     def __init__(self, tempo=120, numerador=4, denominador=4):
         self.nombre = "Guitarra"
-        self.instrumento = 24  # Acoustic Guitar Nylon
+        self.instrumento = ELECTRIC_GUITAR  # Acoustic Guitar Nylon
         self.canal = 1
         self.tempo = tempo                  # BPM
         self.numerador = numerador          # Ej. 4 para 4/4
