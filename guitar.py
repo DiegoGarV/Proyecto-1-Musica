@@ -1,23 +1,28 @@
 from music import *
 
+repet=5
 
 class Guitarra(object):
 
-    def __init__(self):
+    def __init__(self, tempo=120, numerador=4, denominador=4):
         self.nombre = "Guitarra"
         self.instrumento = 24  # Acoustic Guitar Nylon
         self.canal = 1
+        self.tempo = tempo                  # BPM
+        self.numerador = numerador          # Ej. 4 para 4/4
+        self.denominador = denominador      # Ej. 4 para 4/4
+
 
     def crear_frase(self):
         frase = Phrase(0.0)
 
-        notas = [
-            # Colocar notas aquí.
-        ]
+        notas = [REST, E2, GS2, REST, FS2, A2, # Compás 1
+                 REST, A2, D3, REST, A2, CS3 # Compás 2
+        ]*repet
 
-        duraciones = [
-            # Colocar duraciones aquí.
-        ]
+        duraciones = [0.5, 0.5, 1, 0.5, 0.5, 1, # Compás 1
+                      0.5, 0.5, 1, 0.5, 0.5, 1 # Compás 2
+        ]*repet
 
         if len(notas) != len(duraciones):
             raise ValueError(
@@ -39,3 +44,8 @@ class Guitarra(object):
         parte.addPhrase(self.crear_frase())
 
         return parte
+      
+mi_guitarra = Guitarra(tempo=83, numerador=4, denominador=4)
+parte_guitarra = mi_guitarra.crear_parte()
+
+Play.midi(parte_guitarra)
