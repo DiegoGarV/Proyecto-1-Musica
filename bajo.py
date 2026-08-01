@@ -1,6 +1,6 @@
 from music import *
 
-repet = 5
+repet=5
 
 class Bajo(object):
 
