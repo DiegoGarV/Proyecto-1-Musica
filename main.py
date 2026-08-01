@@ -1,44 +1,47 @@
 from music import *
 
-from bajo import Bajo
-from guitar import Guitarra
-from piano import Piano
+# from bajo import Bajo
+# from guitar import Guitarra
+# from piano import Piano
 from sax import Saxofon
 from violoncello import Violoncello
+from violin import Violin
 
 
 tempo = 82
-cancion = "Bitter Sweet Symphony "
+cancion = "Bitter Sweet Symphony"
 
 
 def crear_cancion():
-    cancion = Score(cancion, tempo)
+    partitura = Score(cancion, tempo)
 
-    bajo = Bajo()
-    guitarra = Guitarra()
-    piano = Piano()
+    # bajo = Bajo()
+    # guitarra = Guitarra()
+    # piano = Piano()
     saxofon = Saxofon()
     violoncello = Violoncello()
+    violin = Violin()
 
     partes = [
-        bajo.crear_parte(),
-        guitarra.crear_parte(),
-        piano.crear_parte(),
+        # bajo.crear_parte(),
+        # guitarra.crear_parte(),
+        # piano.crear_parte(),
         saxofon.crear_parte(),
-        violoncello.crear_parte()
+        violoncello.crear_parte(),
+        violin.crear_parte()
     ]
 
-    cancion.addPartList(partes)
-
-    return cancion
+    partitura.addPartList(partes)
+    
+    return partitura
 
 
 def playSong():
-    cancion = crear_cancion()
+    partitura = crear_cancion()
 
     # Se llama una sola vez para reproducir todos
     # los instrumentos simultaneamente.
-    Play.midi(cancion)
+    Play.midi(partitura)
 
 
 def main():
