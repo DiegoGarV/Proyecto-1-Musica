@@ -6,9 +6,10 @@ from music import *
 from sax import Saxofon
 from violoncello import Violoncello
 from violin import Violin
+from piano import Piano
 
 
-tempo = 82
+tempo = 120
 cancion = "Bitter Sweet Symphony"
 
 
@@ -17,7 +18,7 @@ def crear_cancion():
 
     # bajo = Bajo()
     # guitarra = Guitarra()
-    # piano = Piano()
+    piano = Piano(tempo=120, repeticion_compases=True)
     saxofon = Saxofon()
     violoncello = Violoncello()
     violin = Violin()
@@ -25,7 +26,7 @@ def crear_cancion():
     partes = [
         # bajo.crear_parte(),
         # guitarra.crear_parte(),
-        # piano.crear_parte(),
+        piano.crear_parte(),
         saxofon.crear_parte(),
         violoncello.crear_parte(),
         violin.crear_parte()
