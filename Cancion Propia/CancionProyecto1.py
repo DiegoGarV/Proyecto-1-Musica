@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from music import *
 
 start = 3.0
@@ -7,41 +8,43 @@ mainTempo = 85
 # Esta melodía debe usar LA (A), SI (B), DO# (C#), 
 # RE (D), MI (E), FA# (F#), SOL# (G#)
 
-# ---------------------- Melody ----------------------
+# ---------------------- Piano Derecha ----------------------
 melody = Phrase(start) 
 
 coro = [FS4, A4, GS4, B4, CS5, FS4, FS4, A4]
 
-notesMelody = ([FS4, A4, CS5, B4,
-                FS4, GS4, A4, CS5,
-                E5, CS5, B4, A4,
-                GS4, FS4, REST, FS4,
-                FS4, A4, GS4, FS4,
-                E4, FS4, A4, GS4,
-                FS4, CS5, B4, A4,
-                GS4, FS4, E4, FS4,
-                A4, B4, CS5, A4,
-                GS4, FS4, E4, CS4,
-                FS4, A4, B4, CS5,
-                B4, GS4, FS4, REST,
-                FS4, GS4, A4, B4, A4, GS4, FS4, E4,
-                FS4, A4, B4, CS5, B4, A4, GS4, FS4,
-                A4, B4, CS5, E5, CS5, B4, A4, GS4,
-                FS4, GS4, A4, CS5, B4, GS4, FS4, E4] + 
-                coro * 4 +
-                [CS5, E5, CS5, B4, A4, B4, GS4, FS4,
-                A4, CS5, E5, FS5, E5, CS5, B4, A4,
-                FS4, A4, CS5, E5, CS5, A4, GS4, FS4,
-                E5, CS5, B4, GS4, A4, GS4, FS4, REST,
-                FS4, A4, CS5, A4,
-                E4, GS4, B4, GS4,
-                FS4, B4, CS5, E5,
-                CS5, B4, GS4, FS4] +
-                coro * 4 +
-                [CS5, B4,
-                A4, GS4,
-                FS4, E4,
-                CS4, FS4])
+notesMelody = ([
+    FS4, A4, CS5, B4,
+    FS4, GS4, A4, CS5,
+    E5, CS5, B4, A4,
+    GS4, FS4, REST, FS4,
+    FS4, A4, GS4, FS4,
+    E4, FS4, A4, GS4,
+    FS4, CS5, B4, A4,
+    GS4, FS4, E4, FS4,
+    A4, B4, CS5, A4,
+    GS4, FS4, E4, CS4,
+    FS4, A4, B4, CS5,
+    B4, GS4, FS4, REST,
+    FS4, GS4, A4, B4, A4, GS4, FS4, E4,
+    FS4, A4, B4, CS5, B4, A4, GS4, FS4,
+    A4, B4, CS5, E5, CS5, B4, A4, GS4,
+    FS4, GS4, A4, CS5, B4, GS4, FS4, E4] + 
+    coro * 4 +
+    [CS5, E5, CS5, B4, A4, B4, GS4, FS4,
+    A4, CS5, E5, FS5, E5, CS5, B4, A4,
+    FS4, A4, CS5, E5, CS5, A4, GS4, FS4,
+    E5, CS5, B4, GS4, A4, GS4, FS4, REST,
+    FS4, A4, CS5, A4,
+    E4, GS4, B4, GS4,
+    FS4, B4, CS5, E5,
+    CS5, B4, GS4, FS4] +
+    coro * 4 +
+    [CS5, B4,
+    A4, GS4,
+    FS4, E4,
+    CS4, FS4
+])
 
 blancas = [HN]
 negras = [QN]
@@ -49,10 +52,71 @@ corcheas = [EN]
 
 coroDuration = corcheas * 8
 
-durationMelody = (negras * 48 + corcheas * 32 + coroDuration * 4 + corcheas * 32 + negras * 16 + coroDuration * 4 + blancas * 8)
+durationMelody = (
+    negras * 48 + 
+    corcheas * 32 + 
+    coroDuration * 4 + 
+    corcheas * 32 + 
+    negras * 16 + 
+    coroDuration * 4 + 
+    blancas * 8
+)
 
 melody.addNoteList(notesMelody, durationMelody)
 
+# ---------------------- Piano Izquierda ----------------------
+pianoLeft = Phrase(start)
+
+notesPianoLeft = ([
+    FS3, CS4, A3, CS4,
+    D3,  A3,  FS3, A3,
+    A2,  E3,  CS3, E3,
+    E3,  B3,  GS3, B3,
+    FS3, CS4,
+    D3, A3,
+    A2, E3,
+    E3, B3,
+    FS3, CS4,
+    D3, A3,
+    A2, E3,
+    E3, B3,
+    FS3, A3, CS4, A3,
+    D3, FS3, A3, FS3,
+    A2, CS3, E3, CS3,
+    E3, GS3, B3, GS3,
+    FS3, CS4, A3, CS4,
+    D3, A3, FS3, A3,
+    A2, E3, CS3, E3,
+    E3, B3, GS3, B3,
+    FS3, CS4, FS3, A3,
+    E3, B3, E3, GS3,
+    D3, A3, D3, FS3,
+    E3, B3, GS3, B3,
+    FS3, CS4,
+    D3, A3,
+    A2, E3,
+    E3, B3,
+    FS3, CS4, A3, CS4,
+    D3, A3, FS3, A3,
+    A2, E3, CS3, E3,
+    E3, B3, GS3, B3,
+    FS3, CS4,
+    D3, A3,
+    E3, B3,
+    FS3, FS3
+])
+
+durationPianoLeft = (
+    negras * 16 + 
+    blancas * 16 + 
+    negras * 48 + 
+    blancas * 8 + 
+    negras * 16 + 
+    blancas * 8
+)
+
+pianoLeft.addNoteList(notesPianoLeft, durationPianoLeft)
+pianoLeft.setDynamic(50)
 # ---------------------- Bass ----------------------
 # El segundo compás inicia 4 tiempos después de 'start'
 bass = Phrase(start + 4.0) 
@@ -230,6 +294,7 @@ saxPhrase.setPan(0.35)
 # ---------------------- Instrumentos ----------------------
 pianoPart = Part("Piano", PIANO, 0)
 pianoPart.addPhrase(melody)
+pianoPart.addPhrase(pianoLeft)
 
 bassPart = Part("Bajo Electrico", ELECTRIC_BASS, 1)
 bassPart.addPhrase(bass)
