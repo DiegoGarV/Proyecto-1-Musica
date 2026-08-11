@@ -57,8 +57,7 @@ melody.addNoteList(notesMelody, durationMelody)
 # El segundo compás inicia 4 tiempos después de 'start'
 bass = Phrase(start + 4.0) 
 
-# Definición de la secuencia de bajo
-pattern = [
+patternBass = [
     # ((E2, 2), (E2, 0.5), (C#2, 0.5), (B1, 1), (A1, 4)) - Repetición 1
     (E2, 2.0), (E2, 0.5), (CS2, 0.5), (B1, 1.0), (A1, 4.0),
     # ((E2, 2), (E2, 0.5), (C#2, 0.5), (B1, 1), (A1, 4)) - Repetición 2
@@ -72,13 +71,11 @@ pattern = [
 notesBass = []
 durationBass = []
 
-# Duración requerida para el bajo (duración total menos el primer compás)
 target_duration = sum(durationMelody) - 4.0
 current_duration = 0.0
 
-# Se repite el patrón hasta cubrir toda la canción
 while current_duration < target_duration:
-    for note, dur in pattern:
+    for note, dur in patternBass:
         if current_duration >= target_duration:
             break
         notesBass.append(note)
@@ -87,19 +84,41 @@ while current_duration < target_duration:
 
 bass.addNoteList(notesBass, durationBass)
 
+# ---------------------- Guitar ----------------------
+# La guitarra eléctrica inicia en el segundo compás (start + 4.0)
+guitar = Phrase(start + 4.0)
+
+# Construcción de la secuencia de notas según lo solicitado
+notesGuitar = ([GS3, A3, GS3, B3] * 2 +  # 8 compases de 4 tiempos por nota
+               [GS3, A3, GS3, B3] * 4 +  # 8 compases de 2 tiempos por nota
+               [GS3, A3, GS3, B3] * 1 +  # 4 compases de 4 tiempos por nota
+               [GS3, A3, GS3, B3] * 2 +  # 4 compases de 2 tiempos por nota
+               [GS3, A3, GS3, B3] * 3)   # 12 compases de 4 tiempos por nota
+
+# Construcción de las duraciones correspondientes
+durationGuitar = ([4.0] * 8 +
+                  [2.0] * 16 +
+                  [4.0] * 4 +
+                  [2.0] * 8 +
+                  [4.0] * 12)
+
+guitar.addNoteList(notesGuitar, durationGuitar)
+
 # ---------------------- Instrumentos ----------------------
-# Piano para la melodía (Canal 0)
 pianoPart = Part("Piano", PIANO, 0)
 pianoPart.addPhrase(melody)
 
-# Bajo Eléctrico para el bajo (Canal 1)
 bassPart = Part("Bajo Electrico", ELECTRIC_BASS, 1)
 bassPart.addPhrase(bass)
+
+guitarPart = Part("Guitarra Electrica", ELECTRIC_GUITAR, 2)
+guitarPart.addPhrase(guitar)
 
 # ---------------------- Partitura ----------------------
 score = Score(mainTempo)
 score.addPart(pianoPart)
 score.addPart(bassPart)
+score.addPart(guitarPart)
 
 Play.midi(score)
 
