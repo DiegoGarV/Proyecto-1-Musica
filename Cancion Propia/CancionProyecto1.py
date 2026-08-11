@@ -104,6 +104,129 @@ durationGuitar = ([4.0] * 8 +
 
 guitar.addNoteList(notesGuitar, durationGuitar)
 
+# ---------------------------------------------------
+# violin
+
+violinPhrase = Phrase(start)
+
+notesViolin = [
+
+    
+    A4,  CS5, B4, A4,
+
+    A4, CS5, GS4, A4,
+
+    CS5, B4, A4, GS4,
+
+    A4, A4, CS5, B4,
+
+    A4, A4, CS5, B4,
+
+    CS5, A4, A4, B4,
+
+    A4, GS4, FS4, GS4,
+
+    A4, A4, CS5, B4,
+
+    GS4, CS5, A4, A4
+]
+
+durationViolin = [WN] * 36
+
+violinPhrase.addNoteList(
+    notesViolin,
+    durationViolin
+)
+
+violinPhrase.setDynamic(48)
+violinPhrase.setPan(0.65)
+
+
+# -------------------------------------------------------------
+# saxofon
+
+saxPhrase = Phrase(start)
+
+saxNotes = []
+saxDurations = []
+
+
+# Cada elemento representa un compas.
+# WN = compas entero
+# HN + HN = dos notas dentro del compas
+
+saxBars = [
+
+    # Compases 1 - 4 -> piano solo
+    [(REST, WN)],
+    [(REST, WN)],
+    [(REST, WN)],
+    [(REST, WN)],
+
+
+    [(CS4, HN), (B3, HN)],
+    [(A3, HN),  (CS4, HN)],
+    [(B3, HN),  (A3, HN)],
+    [(GS3, HN), (REST, HN)],
+
+    [(CS4, HN), (E4, HN)],
+    [(B3, HN),  (GS3, HN)],
+    [(A3, HN),  (CS4, HN)],
+    [(GS3, HN), (REST, HN)],
+
+
+    [(CS4, HN), (B3, HN)],
+    [(A3, HN),  (FS3, HN)],
+    [(E4, HN),  (CS4, HN)],
+    [(B3, HN),  (GS3, HN)],
+
+    [(CS4, WN)],
+    [(A3, WN)],
+    [(E4, WN)],
+    [(B3, WN)],
+
+    [(E4, HN),  (CS4, HN)],
+    [(CS4, HN), (A3, HN)],
+    [(A3, HN),  (FS3, HN)],
+    [(B3, HN),  (GS3, HN)],
+
+    [(CS4, HN), (A3, HN)],
+    [(B3, HN),  (GS3, HN)],
+    [(FS3, HN), (B3, HN)],
+    [(GS3, HN), (CS4, HN)],
+
+    [(CS4, WN)],
+    [(A3, WN)],
+    [(E4, WN)],
+    [(B3, WN)],
+
+    [(GS3, HN), (CS4, HN)],
+    [(E4, HN),  (CS4, HN)],
+    [(CS4, HN), (A3, HN)],
+    [(FS3, WN)]
+]
+
+
+for bar in saxBars:
+
+    for noteData in bar:
+
+        saxNotes.append(noteData[0])
+        saxDurations.append(noteData[1])
+
+
+saxPhrase.addNoteList(
+    saxNotes,
+    saxDurations
+)
+
+saxPhrase.setDynamic(55)
+
+# hacia la izquierda
+saxPhrase.setPan(0.35)
+
+
+
 # ---------------------- Instrumentos ----------------------
 pianoPart = Part("Piano", PIANO, 0)
 pianoPart.addPhrase(melody)
@@ -114,11 +237,22 @@ bassPart.addPhrase(bass)
 guitarPart = Part("Guitarra Electrica", ELECTRIC_GUITAR, 2)
 guitarPart.addPhrase(guitar)
 
+violin = Part( "Violin", VIOLIN, 3)
+violin.addPhrase(violinPhrase)
+
+sax = Part( "Saxofon", TENOR_SAX, 4 )
+sax.addPhrase(saxPhrase)
+
+
+
+
 # ---------------------- Partitura ----------------------
 score = Score(mainTempo)
 score.addPart(pianoPart)
 score.addPart(bassPart)
 score.addPart(guitarPart)
+score.addPart(violin)
+score.addPart(sax)
 
 Play.midi(score)
 
