@@ -55,7 +55,7 @@ class Saxofon(object):
             corcheas * 6 + negras + corcheas * 2 + negras + corcheas * 2 + negras + 
             corcheas * 5 + negras + corcheas * 2 + negras + corcheas * 2 + negras + 
             corcheas * 6 + negras + corcheas * 2 + negras + corcheas * 2 + negras + 
-            corcheas * 5 + negras + corcheas * 2 + negras + corcheas * 2 + negras +
+            corcheas * 5 + negras + corcheas * 2 + negras + corcheas * 2 + negras + 
             corcheas * 64 + blancas * 10 
         )
 
@@ -79,3 +79,20 @@ class Saxofon(object):
         parte.addPhrase(self.crear_frase())
 
         return parte
+
+
+# Crear la parte del instrumento
+sax = Saxofon()
+parte_sax = sax.crear_parte()
+
+# Crear la partitura (Score) especificando el tempo a 83 BPM
+partitura = Score("Saxofon Song", 83.0)
+
+# Establecer el compás en 4/4
+partitura.setTimeSignature(4, 4)
+
+# Agregar la parte a la partitura
+partitura.addPart(parte_sax)
+
+# Guardar como archivo MIDI
+Write.midi(partitura, "saxofon_83bpm.mid")

@@ -59,3 +59,19 @@ class Violoncello(object):
         parte.addPhrase(self.crear_frase())
 
         return parte
+
+# Crear la parte del instrumento
+cello = Violoncello()
+parte_cello = cello.crear_parte()
+
+# Crear la partitura (Score) a 83 BPM
+partitura = Score("Violoncello Song", 83.0)
+
+# Configurar el compás en 4/4
+partitura.setTimeSignature(4, 4)
+
+# Agregar la parte a la partitura
+partitura.addPart(parte_cello)
+
+# Guardar como archivo MIDI
+Write.midi(partitura, "violoncello_83bpm.mid")

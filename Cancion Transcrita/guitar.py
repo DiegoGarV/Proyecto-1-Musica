@@ -48,4 +48,5 @@ class Guitarra(object):
 mi_guitarra = Guitarra(tempo=83, numerador=4, denominador=4)
 parte_guitarra = mi_guitarra.crear_parte()
 
-Play.midi(parte_guitarra)
+# Play.midi(parte_guitarra)
+Write.midi(parte_guitarra, "guitarra.mid")

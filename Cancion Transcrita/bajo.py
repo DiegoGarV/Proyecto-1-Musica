@@ -50,4 +50,4 @@ class Bajo(object):
 mi_bajo = Bajo(tempo=83, numerador=4, denominador=4)
 parte_bajo = mi_bajo.crear_parte()
 
-Play.midi(parte_bajo)
+Write.midi(parte_bajo, "bajo.mid")
