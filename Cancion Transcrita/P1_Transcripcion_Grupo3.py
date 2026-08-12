@@ -43,7 +43,7 @@ def playSong():
     # Se llama una sola vez para reproducir todos
     # los instrumentos simultaneamente.
     Play.midi(partitura)
-    Write.midi(partitura, "P1_Transcripcion_Grupo3.mid")
+    #Write.midi(partitura, "P1_Transcripcion_Grupo3.mid")
 
 
 
